@@ -1,6 +1,7 @@
 package ch.arnab.simplelauncher;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -30,6 +31,8 @@ public class AppsGridFragment extends GridFragment implements LoaderManager.Load
 
         // create the loader to load the apps list in background
         getLoaderManager().initLoader(0, null, this);
+
+        getView().setBackgroundColor(Color.BLUE);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class AppsGridFragment extends GridFragment implements LoaderManager.Load
 
         if (isResumed()) {
             setGridShown(true);
-        } else {
+            } else {
             setGridShownNoAnimation(true);
         }
     }
