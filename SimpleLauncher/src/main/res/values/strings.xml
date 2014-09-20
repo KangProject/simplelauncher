@@ -5,4 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
+    <!-- Webserver -->
+    <string name="ticker_text">Starting Remote Web Server</string>
+    <string name="notification_title">SimpleLauncher Web Server</string>
+    <string name="notification_message">Click to stop the Web Server</string>
 </resources>
