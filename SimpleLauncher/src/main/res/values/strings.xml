@@ -8,5 +8,5 @@
     <!-- Webserver -->
     <string name="ticker_text">Starting Remote Web Server</string>
     <string name="notification_title">SimpleLauncher Web Server</string>
-    <string name="notification_message">Click to stop the Web Server</string>
+    <string name="notification_message">Chrome http://127.0.0.1:4300 - Click here to launch</string>
 </resources>

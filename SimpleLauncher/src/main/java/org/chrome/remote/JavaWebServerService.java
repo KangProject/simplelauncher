@@ -81,7 +81,7 @@ public class JavaWebServerService extends Service {
         Log.d(TAG, "Create an ongoing notification");
         Intent notificationIntent = new Intent(this,
                 HomeScreenDirectLaunch.class);
-        //notificationIntent.putExtra(KeyChainDemoActivity.EXTRA_STOP_SERVER,    true);
+        notificationIntent.putExtra(HomeScreenDirectLaunch.EXTRA_OPEN_URL, true);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, 0);
         Notification notification = new Notification.Builder(this).

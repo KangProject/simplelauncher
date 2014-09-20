@@ -18,7 +18,6 @@ package org.chrome.remote;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -30,8 +29,11 @@ import javax.net.ServerSocketFactory;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Base64;
 import android.util.Log;
+
+import ch.arnab.simplelauncher.HomeScreenDirectLaunch;
 
 public class JavaWebServer {
 
@@ -50,12 +52,14 @@ public class JavaWebServer {
     // The base64 encoded image string used as an embedded image
     private final String base64Image;
 
+    Context appContext = null;
+
     /**
      * WebServer constructor.
      */
     public JavaWebServer(Context ctx) {
         try {
-
+            appContext = ctx;
             // Create the SSL server socket factory
             sssf = ServerSocketFactory.getDefault();
 
@@ -112,11 +116,18 @@ public class JavaWebServer {
                         // this blank line signals the end of the headers
                         out.println("");
                         // Send the HTML page
-                        out.println("<H1>Welcome to Android SimpleLauncher!</H1>");
+                        out.println("<H1>Android SimpleLauncher!</H1>");
                         // Add an embedded Android image
                         out.println("<img src='data:image/png;base64," + base64Image + "'/>");
                         out.flush();
                         socket.close();
+
+                        // Try to trigger action here
+                        Intent viewIntent = new Intent(appContext, HomeScreenDirectLaunch.class);
+                        // Surface already existing intent with PendingIntent.FLAG_UPDATE_CURRENT
+                        viewIntent.setAction(Long.toString(System.currentTimeMillis()));
+                        viewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        appContext.startActivity(viewIntent);
                     } catch (Exception e) {
                         Log.d(TAG, "Error: " + e);
                     }
