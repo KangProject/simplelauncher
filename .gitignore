@@ -2,6 +2,9 @@
 *.apk
 *.ap_
 
+!/SimpleLauncher-debug_version1.3.apk
+!/SimpleLauncher-debug_latest.apk
+
 # files for the dex VM
 *.dex
 
